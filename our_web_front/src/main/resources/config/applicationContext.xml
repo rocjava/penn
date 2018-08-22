@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+     			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     			http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+    			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+	<context:component-scan base-package="com.penn.mobile.*.controller" />
+
+	<context:component-scan base-package="com.*.service.impl" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+	</context:component-scan>
+	
+	<bean id="basePropertyPlaceHolder"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:/properties/jdbc.properties</value>
+				<value>classpath*:/properties/memcached.properties</value>
+				<value>classpath*:/properties/wx.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- masterDataSource -->
+	<bean id="masterDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${mysql.driverClassName}" />
+		<property name="url" value="${mysql.url}" />
+		<property name="username" value="${mysql.username}" />
+		<property name="password" value="${mysql.password}" />
+	</bean>
+	
+	
+	<!-- slaveDataSource -->
+	<bean id="slaveDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${slave.mysql.driverClassName}" />
+		<property name="url" value="${slave.mysql.url}" />
+		<property name="username" value="${slave.mysql.username}" />
+		<property name="password" value="${slave.mysql.password}" />
+	</bean>
+	
+	
+	<!-- baseDataSource -->
+	<bean id="baseDataSource" class="com.penn.anotation.DynamicDataSource">
+		<property name="targetDataSources">  
+              <map key-type="java.lang.String">  
+                  <!-- write -->
+                 <entry key="write" value-ref="masterDataSource"/>  
+                 <!-- read -->
+                 <entry key="read" value-ref="slaveDataSource"/>  
+              </map>  
+              
+        </property>  
+        <property name="defaultTargetDataSource" ref="masterDataSource"/> 
+	</bean>
+
+	<!-- define the SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="baseDataSource" />
+		<property name="configLocation" value="classpath:/config/mybatis-configuration.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/lawyer/core/mapper/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- mysql数据源的sqlSessionTemplate配置 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- scan for mappers and let them be autowired -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.*.core.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!-- define the TransactionManager -->
+	<bean id="txManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="baseDataSource" />
+	</bean>
+	
+	<!-- 配置数据库注解aop -->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <bean id="manyDataSourceAspect" class="com.penn.anotation.DataSourceAspect" />
+    <aop:config>
+        <aop:aspect id="c" ref="manyDataSourceAspect">
+            <aop:pointcut id="tx" expression="execution(* com.*.mapper.*.*(..))"/>
+            <aop:before pointcut-ref="tx" method="before"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!-- memcached -->
+    <bean id="apaMemcachedClientBuilder" class="com.penn.memcached.ApaMemcachedClientBuilder">
+	    <property name="servers" value="${memcached.server}"/>
+	</bean>
+	<bean id="apaMemcachedClient" factory-bean="apaMemcachedClientBuilder" factory-method="build" destroy-method="shutdown"/>
+
+	<bean class="com.penn.common.util.ApplicationContextUtil"/>
+	<!-- 全局过滤器filter-->
+	<bean id="accessSecurityFilter" class="com.penn.common.filter.AccessSecurityFilter">
+		<property name="accessUrls">
+			<list>
+				<!--需要用户登录后才能访问的地址  -->
+				<value>/**/customer/customerShow.htm</value>
+				<value>/**/customer/customer_show.htm</value>
+			</list>
+		</property>
+		<property name="transactionUrl" value="/**/ajax_access/submit.json" />
+		<property name="transCodes">
+			<list>
+				<!-- 需要用户登录后才能ajax请求的交易号 -->
+				<value>T1502</value>
+				<value>T1505</value>
+			</list>
+		</property>
+		<!-- 默认登录页面，用于重定向 -->
+		<property name="loginURL" value="/index.htm"/>
+		<!-- 用于跳转微信授权页面的url -->
+		<property name="accreditUrl" value="/**/wxAuth/**/*.do"/>
+	</bean>
+	<!-- 微信类-->
+	<bean id="weiXinHttpClient" class="com.penn.common.wx.WeiXinHttpClient">
+		<property name="proxySign" value="${weixin.proxySign}" />
+	</bean>
+	<bean id="weixinAccreditAccess" class="com.penn.common.wx.WeixinAccreditAccess">
+		<property name="appId" value="${weixin.appid}"/>
+		<property name="appSecret" value="${weixin.appsecret}"/>
+		<property name="codeUrl" value="${weixin.code_url}"/>
+		<property name="callBackUrl" value="${weixin.callback_uri}"/>
+		<property name="openIdUrl" value="${weixin.openId_url}"/>
+	</bean>
+</beans>

@@ -1,0 +1,8 @@
+<h2>Add a Order</h2>
+ <form id="orderForm" method = "post"  action = "insert.do"  >
+	<table>
+    <tr><td>id---<input id="id" name="id" type="text"/></td></tr>
+    <tr><td>name---<input id="id" name="name" type="text"/></td></tr>
+	</table>
+</form>
+ <h4><a href="javascript:document.getElementById('orderForm').submit();">SUBMIT</a></h4>

@@ -1,0 +1,8 @@
+<h2>List all Orders</h2>
+<ul>
+    #foreach($order in $orders)
+        <li><a href="detail.do?id=${order.id}">${order.id}-----${order.name}</a></li>
+    #end
+    
+</ul>
+ <h4><a href="add.do">ADD</a></h4>

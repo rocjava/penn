@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+.index-bannar {width:100%;height:auto;float:left;background:#9f0317;margin-top:56px;border-bottom:2px solid #ff7200;}
+.bannar-box {width:20em;height:133px;margin:0 auto;}
+.text-container-home {float:left;height:auto;width:100%;padding:0 ;}
+
+
+.margin-right0 {margin-right:0;}
+.margin-left0 {margin-left:0;}
+.margin-top0 {margin-top:0;}
+.margin-bottom0 {margin-bottom:0;}
+
+.home-title {margin-top:0.7em;background-size:100%;}
+
+.cpxg {width:100%;height:6em;float:left;background:#178fff;  }
+.kjxb {width:100%;height:6em;float:left;background:#00aca2;}
+.bdlp {width:100%;height:6em;float:left;background:#00a201;}
+.wzhd {width:100%;height:6em;float:left;background:#ff8a00;}
+.qcbx {width:100%;height:6em;float:left;background:#ff0066;}
+.fwwd {width:100%;height:6em;float:left;background:#afd500;}
+.bxzx {width:100%;height:6em;float:left;background:#a300ab;}
+.yjfk {width:100%;height:6em;float:left;background:#0a59c2;}
+.account {width:100%;height:6em;float:left;background:#ff2400;}
+.safe-ys {width:100%;height:3em;float:left;background:#491bc4; text-align:center;font-size:1em;color:#fff; line-height:3em;}
+
+.imgstyle-11em {width:11em;margin:1.4em 0 0 0.6em;}
+.imgstyle-23em {width:23em;margin:0.8em 0 0 1em;}
+.imgstyle-7em {width:6.5em;margin:0.5em 0 0 0.65em;}
+
+
+a:link.box-menu,a:active.box-menu,a:hover.box-menu,a:visited.box-menu {width:49%;height:6em;float:left; text-decoration:none;margin-right:2%; margin-bottom:2%;}
+a:link.box-menu2,a:active.box-menu2,a:hover.box-menu2,a:visited.box-menu2 {width:99.9%;height:6em;float:left; text-decoration:none;margin-bottom:2%;}
+a:link.box-menu3,a:active.box-menu3,a:hover.box-menu3,a:visited.box-menu3 {width:32%;height:6em;float:left; text-decoration:none;margin-bottom:2%;margin-right:2%;}
+a:link.box-menu4,a:active.box-menu4,a:hover.box-menu4,a:visited.box-menu4 {width:100%;height:3em;float:left; text-decoration:none;}
+.text-container3 {float:left;height:auto;width:98%;background:#1472c9;padding:0.5em 0 2em 0.5em;}
+.list-insurance-type-blue {width:100%;height:auto;padding:0;margin:0;border-collapse:collapse; background:#489ae7;}
+.list-insurance-type-blue tr th {height:2em;border-bottom:0.1em solid #79beff;padding:0.4em;font-weight:normal;}
+.list-insurance-type-blue tr td {height:2em;border-bottom:0.1em solid #79beff;padding:0.4em;font-weight:normal;}
+a:link.list-a-style,a:active.list-a-style,a:hover.list-a-style,a:visited.list-a-style {color:#fff;width:95%;float:left;}
+
+
+
+/*优品卡列表*/
+.ypk-lingqu {width:100%;height:6em;float:left;background:#6eb9ff;}
+.new-carinsurance {width:100%;height:6em;float:left;background:#33b534;}
+.old-customer {width:100%;height:6em;float:left;background:#ff3385;}
+.lucky-dzp {width:100%;height:6em;float:left;background:#ffa133;}
+.imgstyle-274 {width:274px;margin:0.7em 0 0 1em;}

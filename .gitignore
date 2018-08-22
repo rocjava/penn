@@ -1,0 +1,25 @@
+*.class
+*.iml
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# ide files #
+.classpath
+.project
+.mymetadata
+/.gradle/
+/.idea/
+/captures/
+.DS_Store
+
+# setting folders #
+.settings/
+.svn/
+.bin/
+target/
+build/
+script/
+/substitute.sh

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>合作品牌</title>
+    <link href="${mobile.contextPath}/css/cop/Partners_css.css" rel="stylesheet" type="text/css">
+    <link href="${mobile.contextPath}/css/cop/reset.css" rel="stylesheet" type="text/css">
+    <style>
+    .par_logobox ul li:nth-child(8) a i {
+    	
+    }
+    
+    	
+    </style>
+</head>
+
+
+<body style="background: #002a52;">
+    <div class="content_box">
+        <div class="banner_box clear"></div>
+        <div class="bk20"></div>
+        <div class="title_box">
+            <div class="titlt_con"><i></i>
+                <h2 style="color:white">我们的成功合作者</h2>
+                <p style="color:white">选择我们不会错</p>
+            </div>
+        </div>
+        <div class="bk10"></div>
+        <div class="par_logobox">
+            <ul>
+                <li><a href="#" title="品牌1"><i></i></a></li>
+                <li><a href="#" title="品牌2"><i></i></a></li>
+                <li><a href="#" title="品牌3"><i></i></a></li>
+                <li><a href="#" title="品牌4"><i></i></a></li>
+                <li><a href="#" title="品牌5"><i></i></a></li>
+                <li><a href="#" title="品牌6"><i></i></a></li>
+                <li><a href="#" title="品牌7"><i></i></a></li>
+                <li><a href="#" title="品牌8"><i></i></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

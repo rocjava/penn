@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="context" content="" id="_ebmobile_context">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+
+<title>上海众华律师事务所</title>
+
+
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/boilerplate.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/mobile-frame.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/mobile-web-em-type.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/home.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/mobile-web-xb.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/slider.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/slider.default.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/panel.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${mobile.contextPath}/css/index/panel.default.css" type="text/css" media="screen">
+
+
+<script type="text/javascript" src="${mobile.contextPath}/js/index/zepto.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/touch.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/matchMedia.js" language="JavaScript"></script><style>.gmu-media-detect{-webkit-transition: width 0.001ms; width: 0; position: absolute; clip: rect(1px, 1px, 1px, 1px);}
+@media screen and (width: 320px) { #gmu-media-detect0 { width: 1px; } }
+</style>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/event.ortchange.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/parseTpl.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/gmu.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/event.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/widget.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/slider.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/dots.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/$touch.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/$autoplay.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/$lazyloadimg.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/imgzoom.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/throttle.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/event.scrollStop.js" language="JavaScript"></script>
+<script type="text/javascript" src="${mobile.contextPath}/js/index/panel.js" language="JavaScript"></script>
+
+</head>
+	<body style="background:#002a52;">
+		 <header>
+			<div class="headbox">
+			<div id="logo-box"><!-- logobar -->
+		    	<a id="push-left" href="#" class="page-qiehuan"></a>
+		    	<div class="logo"><img src="${mobile.contextPath}/images/index/loge-sanjin.png" style="background-size:100%;" border="0"></div>
+				<div id="title-name" class="font-14"><img src="${mobile.contextPath}/images/index/sanjinloge.jpg" style="background-size:100%;" border="0"></div>
+			</div>
+		    </div>
+		</header>
+ 
+		<div id="page">
+			<div class="cont ui-panel-animate" style="transform: translate3d(0px, 0px, 0px);">
+				<div id="slider" style="z-index:999;" class="ui-slider">
+					<div class="ui-slider-group" style="width: 640px;">
+						<div class="ui-slider-item" data-index="0" style="width: 320px; left: 0px; transition-duration: 400ms; transform: translate(0px, 0px) translateZ(0px);">
+	       					 <a href="http://localhost:8080/eb-mobile/index.htm#"><img width="100%" src="${mobile.contextPath}/images/index/index-banner3.jpg" class="slider_image"></a>
+	   					</div>
+	   					<div class="ui-slider-item" data-index="1" style="width: 320px; left: -320px; transition-duration: 400ms; transform: translate(320px, 0px) translateZ(0px);">
+	        				 <a href="http://localhost:8080/eb-mobile/index.htm#"><img width="100%" src="${mobile.contextPath}/images/index/index-banner5.jpg" class="slider_image"></a>
+	    				</div>
+    				</div>
+    				<p class="ui-slider-dots"><b class="ui-state-active"></b><b class=""></b></p>
+    			</div>   
+
+				<script>
+				    //创建slider组件
+				    $('#slider').slider( { imgZoom: true });
+				</script> 
+				<!--页面正文-->
+				<div class="gridContainer clearfix" style="width:100%;padding:0;padding-left:0.1em">
+					<div id="LayoutDiv1">
+						<div id="wrapper2"><!-- 页面外围框架 -->
+							<div id="content" style="margin-top:0em;margin-bottom:0;width:98%;"><!-- 界面主内容 -->
+								<table cellpadding="0" cellspacing="0" class="wx-main-list">
+									<tbody>
+										<tr>
+											<td class="wx-main-list-td" align="center">
+												<table cellpadding="0" cellspacing="0" class="wx-detail">
+								                   	<tbody>
+								                   		<tr>
+										                    <td class="wx-detail-td">
+										                    	<div class="text-container-home">
+			                    		                        	<a href="http://localhost:8080/eb-mobile/vehicle/weiwebsite-building.htm" class="box-menu">
+			                    		                        		<div class="cpxg"><img src="${mobile.contextPath}/images/index/cpxg-img.jpg" class="imgstyle-11em" style="" border="0"></div>
+			                    		                        	</a>		   
+			                                                        <a href="${mobile.contextPath}/lawyer/list.do" class="box-menu" style="margin-right:0;">
+			                                                         	<div class="kjxb"><img src="${mobile.contextPath}/images/index/kjxb-img.jpg" class="imgstyle-11em" style="" border="0"></div>
+			                                                        </a>
+			                                                        <a href="http://localhost:8080/eb-mobile/claim/car_reported.htm" class="box-menu">
+			                                                        	<div class="bdlp"><img src="${mobile.contextPath}/images/index/bdlp-img.jpg" class="imgstyle-11em" style="" border="0"></div>
+			                                                        </a>
+			                            							<a href="${mobile.contextPath}/lawyer/cop.do" class="box-menu" style="margin-right:0;">
+			                            								<div class="wzhd"><img src="${mobile.contextPath}/images/index/lxdd-img.jpg" class="imgstyle-11em" style="" border="0"></div>
+			                            							</a>
+			                                                        <a href="http://localhost:8080/eb-mobile/vehicle/vehicle_group.htm" class="box-menu2">
+			                                                        	<div class="qcbx"><img src="${mobile.contextPath}/images/index/qcbx-img.jpg" class="imgstyle-23em" style="" border="0"></div>
+			                                                        </a>
+			                                                        <a href="http://localhost:8080/eb-mobile/branchserve/services-site-list.htm" class="box-menu2">
+			                                                        	<div class="fwwd"><img src="${mobile.contextPath}/images/index/wdfw-img.jpg" class="imgstyle-23em" style="" border="0"></div>
+			                                                        </a>
+			                            							<a href="http://localhost:8080/eb-mobile/vehicle/weiwebsite-building.htm" class="box-menu3">
+			                            								<div class="bxzx"><img src="${mobile.contextPath}/images/index/bxzx-img.jpg" class="imgstyle-7em" style="" border="0"></div>
+			                            							</a>
+			                            							<a href="http://localhost:8080/eb-mobile/vehicle/weiwebsite-building.htm" class="box-menu3">
+			                            								<div class="yjfk"><img src="${mobile.contextPath}/images/index/yjfk-img.jpg" class="imgstyle-7em" style="" border="0"></div>
+			                            							</a>
+			                            							<a href="http://localhost:8080/eb-mobile/customer/customerShow.htm" class="box-menu3" style="margin-right:0;">
+			                            								<div class="account"><img src="${mobile.contextPath}/images/index/arzx-img.jpg" class="imgstyle-7em" style="" border="0"></div>
+			                            							</a>
+										                        </div>
+										                    </td>
+								                    	</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--隐藏菜单-->
+			<div class="panel ui-panel ui-panel-push ui-panel-left ui-panel-animate" style="transform: translate3d(-320px, 0px, 0px);">     
+	        	<table class="list-insurance-type-blue font-20-white" border="0">
+	            	<tbody>
+		            	<tr>
+		                	<th class="text-left" colspan="2"> HI，欢迎您的光临！</th>
+		                </tr>
+		            	<tr>
+		            	     <th class="text-left" width="95%"><a href="http://localhost:8080/eb-mobile/index.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-home.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 微站首页</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		                	<th class="text-left"><a href="http://localhost:8080/eb-mobile/customer/customerShow.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-account.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 律所简介</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		            		<th class="text-left"><a href="${mobile.contextPath}/lawyer/list.do" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-car.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 明星律师</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		            	    <th class="text-left"><a href="http://localhost:8080/eb-mobile/renewal/vehicle_renewal.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-kjxb.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 业务领域</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		            	    <th class="text-left"><a href="${mobile.contextPath}/lawyer/cop.do" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-lxdd.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 合作机构</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		            	    <th class="text-left"><a href="http://localhost:8080/eb-mobile/claim/car_policy_query.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-serach-bd.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 客户案例</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		            	    <th class="text-left"><a href="http://localhost:8080/eb-mobile/claim/car_policy_query.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-serach-lp.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 众华荣誉</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>
+		            	<tr>
+		            	    <th class="text-left"><a href="http://localhost:8080/eb-mobile/branchserve/services-site-list.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-yywd.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 法律咨询</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>	
+		            	<tr>
+		            	    <th class="text-left"><a href="http://localhost:8080/eb-mobile/vehicle/weiwebsite-building.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-bxzx.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 意见反馈</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>	                                
+		            	<tr>
+		            	    <th class="text-left"><a href="http://localhost:8080/eb-mobile/vehicle/weiwebsite-building.htm" class="list-a-style"><img src="${mobile.contextPath}/images/index/sico-yjfk.png" style="width:1.3em;margin-top:-0.2em;margin-right:0.5em;" border="0"> 联系我们</a></th>
+		                    <th class="text-right" width="5%" style="font-family:&#39;新宋体&#39;;"> &gt; </th>
+		                </tr>	                                                           					
+	                </tbody>
+	           	</table>                            
+	         </div>
+		</div>
+		<!--脚本-->
+		<script type="text/javascript">
+		    $(function ($) {
+		        $('.panel').panel({
+		            contentWrap: $('.cont')
+		        });
+		
+		        $('#push-left').on('click', function () {
+		            $('.panel').panel('toggle', 'push', 'left');
+		        });
+				<!-- $(".slider_image").css("width","375px"); -->
+		    }(Zepto));
+		</script>
+		<div class="ui-panel-dismiss" style="width: 0px; right: auto; height: 599px; left: 320px; display: none;">
+		</div>
+		<div class="gmu-media-detect" id="gmu-media-detect0">
+		</div>
+	</body>
+</html>

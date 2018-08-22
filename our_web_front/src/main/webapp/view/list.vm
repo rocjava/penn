@@ -1,0 +1,8 @@
+<h2>List of Feeds</h2>
+<ul>
+    #foreach($lawyer in $lawyers)
+        <li><a href="user/${lawyer.id}">${lawyer.name}--${lawyer.mobile}--${lawyer.university}</a></li>
+    #end
+</ul>
+path:$mobile.contextPath
+<img src="${mobile.contextPath}/images/itunes.png"></img>

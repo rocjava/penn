@@ -1,0 +1,10 @@
+	<p>这是一个showUser界面 ${lawyer.name}</p>	
+	<p>Title: ${lawyer.name}</p>
+	<table>
+    <tr><td bgcolor="#CC00FF">${lawyer.id}</td></tr>
+    <tr><td bgcolor="#CC00FF">${lawyer.name}</td></tr>
+    <tr><td bgcolor="#CC00FF">${lawyer.mobile}</td></tr>
+    <tr><td bgcolor="#CC00FF">${lawyer.gender}</td></tr>
+    <tr><td bgcolor="#CC00FF">${lawyer.email}</td></tr>
+	</table>
+	

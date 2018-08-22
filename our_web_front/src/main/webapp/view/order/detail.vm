@@ -1,0 +1,5 @@
+<h2>Detail of Order</h2>
+	<table>
+    <tr><td>id---${order.id}</td></tr>
+    <tr><td>name---${order.name}</td></tr>
+	</table>
