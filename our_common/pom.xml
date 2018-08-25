@@ -12,7 +12,7 @@
     <artifactId>our_common</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <spring.version>3.2.4.RELEASE</spring.version>
+        <spring.version>4.3.0.RELEASE</spring.version>
         <aspectj.version>1.7.3</aspectj.version>
         <!-- log4j日志文件管理包版本 -->
         <slf4j.version>1.6.6</slf4j.version>

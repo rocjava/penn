@@ -7,38 +7,44 @@ public class Lawyer implements Serializable{
 	
 	private static final long serialVersionUID = 6605645624341620452L;
 	
-	private int id;
+	private Integer id;
 	private String name;
-	private int age;
+	private Integer age;
 	private String mobile;
 	private String email;
 	private String telephone;
 	private String level;
-	private int workingYears;
+	private Integer workingYears;
 	private String degree;
 	private String gender;
 	private String university;
 	private String status;
 	private Date createDate;
 	private Date lastModifyDate;
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
+
+	public Integer getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+
+	public void setAge(Integer age) {
 		this.age = age;
 	}
+
 	public String getMobile() {
 		return mobile;
 	}
@@ -63,12 +69,15 @@ public class Lawyer implements Serializable{
 	public void setLevel(String level) {
 		this.level = level;
 	}
-	public int getWorkingYears() {
+
+	public Integer getWorkingYears() {
 		return workingYears;
 	}
-	public void setWorkingYears(int workingYears) {
+
+	public void setWorkingYears(Integer workingYears) {
 		this.workingYears = workingYears;
 	}
+
 	public String getDegree() {
 		return degree;
 	}

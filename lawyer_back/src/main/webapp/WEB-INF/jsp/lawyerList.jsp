@@ -55,7 +55,7 @@
                                 <label class="control-label col-md-3 no-padding-right" for="realName">姓名:</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" name="realName" id="realNames" placeholder="Real name" class="form-control"/>
+                                    <input type="text" name="realName" id="realName" placeholder="Real name" class="form-control"/>
                                 </div>
                             </div>
 
@@ -84,9 +84,9 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label col-md-3 no-padding-right" for="form-field-11"> 用户名: </label>
+                                <label class="control-label col-md-3 no-padding-right" for="userName"> 用户名: </label>
                                 <div class="col-md-6">
-                                    <input type="text" id="form-field-11" placeholder="User name"  class="form-control"/>
+                                    <input type="text" id="userName" placeholder="User name"  class="form-control"/>
                                 </div>
                             </div>
 
@@ -119,10 +119,10 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label col-md-3 no-padding-right" for="realName">姓名:</label>
+                                <label class="control-label col-md-3 no-padding-right" for="university">学校:</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" name="realName" id="realName" placeholder="Real name" class="form-control"/>
+                                    <input type="text" name="university" id="university" placeholder="University" class="form-control"/>
                                 </div>
                             </div>
 
@@ -260,7 +260,11 @@
                 {
                     name:'gender',
                     index:'gender',
-                    editable: true
+                    editable: true,
+                    edittype: 'checkbox',
+                    editoptions: {value:"男:女"},
+                    unformat: aceSwitch
+
                 },
                 {
                     name:'mobile',
@@ -277,7 +281,18 @@
                     index:'degree' ,
                     editable: true ,
                     edittype:"select",
-                    editoptions:{value:"1:大专;2:本科;3:研究生;4:博士"}
+                    editoptions:{value:"1:大专;2:本科;3:研究生;4:博士"},
+                    formatter:function(value,options,row){
+                       if(value == 1){
+                           return '大专';
+                       }else if(value == 2){
+                           return '本科';
+                       }else if(value == 3){
+                           return '研究生';
+                       }else if(value == 4){
+                           return '博士';
+                       }
+                    }
                 },
                 {
                     name:'university',
@@ -294,7 +309,7 @@
                     index:'status' ,
                     editable: true ,
                     edittype:"checkbox" ,
-                    editoptions: {value:"Yes:No"} ,
+                    editoptions: {value:"有效:无效"} ,
                     unformat: aceSwitch
                 },
                 {
@@ -308,7 +323,7 @@
                     }
                 }
             ],
-            editurl: '<%=basePath%>/back/lawyer/update.do',
+            editurl: '<%=basePath%>/back/lawyer/createOrUpdateOrDelete.do',
             viewrecords:true,
             rowNum:10,
             rowList:[10,20,30],
@@ -342,19 +357,14 @@
             { 	//navbar options
                 edit: true,
                 editicon : 'icon-pencil blue',
-
                 add: true,
                 addicon : 'icon-plus-sign purple',
-
                 del: true,
                 delicon : 'icon-trash red',
-
                 search: true,
                 searchicon : 'icon-search orange',
-
                 refresh: true,
                 refreshicon : 'icon-refresh green',
-
                 view: true,
                 viewicon : 'icon-zoom-in grey',
             },
@@ -366,10 +376,11 @@
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
                     style_edit_form(form);
                 },
-                top : 200, //位置
-                left: 500, //位置
+                top : 138, //位置
+                left: 622, //位置
                 height:600, //大小
                 width:400, //大小
+                mtype : "PUT"
             },
             {
                 //add record form
@@ -380,7 +391,12 @@
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
                     style_edit_form(form);
-                }
+                },
+                top : 138, //位置
+                left: 622, //位置
+                height:600, //大小
+                width:400, //大小
+                mtype : "POST"
             },
             {
                 //delete record form
@@ -388,17 +404,17 @@
                 beforeShowForm : function(e) {
                     var form = $(e[0]);
                     if(form.data('styled')) return false;
-
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
                     style_delete_form(form);
-
                     form.data('styled', true);
                 },
                 onClick : function(e) {
                     alert(1);
-                }
-            },
-            {
+                },
+                top : 270, //位置
+                left: 737, //位置
+                mtype : "PUT"
+            },{
                 //search form
                 recreateForm: true,
                 afterShowSearch: function(e){
@@ -422,10 +438,23 @@
                 beforeShowForm: function(e){
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-                }
+                },
+                top : 138, //位置
+                left: 622, //位置
             }
         );
 
+        $('#btn_query').on('click',function(){
+            var userName = $("#userName").val();
+            var realName = $("#realName").val();
+            var university = $("#university").val();
+            $("#gridTable").jqGrid('setGridParam',{
+                url: "<%=basePath%>/back/lawyer/list.do",
+                postData: {'name': userName,'university': university},
+                datatype: "json",
+                mtype : "post"
+            }).trigger('reloadGrid');
+        });
     });
 
     function aceSwitch( cellvalue, options, cell ) {
@@ -446,13 +475,12 @@
 
 
     function style_edit_form(form) {
+        console.log(form);
         //enable datepicker on "sdate" field and switches for "stock" field
-        form.find('input[name=createDate]').datepicker({format:'yyyy-mm-dd' , autoclose:true}).end()
-        .find('input[name=status]')
-        .addClass('ace ace-switch ace-switch-3').before('<label class="inline">').after('<label/>').after('<span class="lbl"></span>').end()
-        .find('input[name=id]').attr('disabled','disabled');
-
-
+        form.find('input[name=createDate]').datepicker({format:'yyyy-mm-dd' , autoclose:true}).end();
+        form.find('input[name=status]').addClass('ace ace-switch ace-switch-5').before('<label class="inline">').after('<label/>').after('<span class="lbl"></span>').end();
+        form.find('input[name=id]').attr('disabled','disabled').end();
+        form.find('input[name=gender]').addClass('ace ace-switch ace-switch-2').before('<label class="inline">').after('<label/>').after('<span class="lbl"></span>').end();
 
         //update buttons classes
         var buttons = form.next().find('.EditButton .fm-button');
@@ -464,12 +492,29 @@
         buttons.find('.ui-icon').remove();
         buttons.eq(0).append('<i class="icon-chevron-left"></i>');
         buttons.eq(1).append('<i class="icon-chevron-right"></i>');
-        $('input[name=status]').removeAttr('checked').on('click', function(){
-
-            console.log($(this).val());
-        });
     }
 
+
+    function style_delete_form(form) {
+        var buttons = form.next().find('.EditButton .fm-button');
+        buttons.addClass('btn btn-sm').find('[class*="-icon"]').remove();//ui-icon, s-icon
+        buttons.eq(0).addClass('btn-danger').prepend('<i class="icon-trash"></i>');
+        buttons.eq(1).prepend('<i class="icon-remove"></i>')
+    }
+
+    function style_search_filters(form) {
+        form.find('.delete-rule').val('X');
+        form.find('.add-rule').addClass('btn btn-xs btn-primary');
+        form.find('.add-group').addClass('btn btn-xs btn-success');
+        form.find('.delete-group').addClass('btn btn-xs btn-danger');
+    }
+    function style_search_form(form) {
+        var dialog = form.closest('.ui-jqdialog');
+        var buttons = dialog.find('.EditTable')
+        buttons.find('.EditButton a[id*="_reset"]').addClass('btn btn-sm btn-info').find('.ui-icon').attr('class', 'icon-retweet');
+        buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'icon-comment-alt');
+        buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'icon-search');
+    }
 
     //replace icons with FontAwesome icons like above
     function updatePagerIcons(table) {

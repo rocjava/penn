@@ -7,16 +7,16 @@ import com.penn.memcached.ApaMemcachedClient;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RequestMapping("back/lawyer")
@@ -30,8 +30,6 @@ public class LawyerController {
 
 	@Autowired
 	private ApaMemcachedClient tntMemcachedClient;
-
-
 
 	@RequestMapping("/detail")
 	public String detail(String id, ModelMap modelMap,HttpServletRequest request) {
@@ -98,21 +96,25 @@ public class LawyerController {
 		return response;
     }
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/createOrUpdateOrDelete", method = RequestMethod.PUT)
 	@ResponseBody
-	public void update(Long id, String name, Long age, String gender, String mobile,
-					   String email, String degree, String university,
-					   Long workingYears, String status, HttpServletRequest request){
-		Map params = request.getParameterMap();
-		logger.info(name);
+	public String update(Lawyer lawyer, HttpServletRequest request){
+		String oper = request.getParameter("oper");
+		if(oper != null && oper.equalsIgnoreCase("del")){
+			//TOTO
+			//DELETE DATA
+			logger.info("[DELETES] id:"+lawyer.getId());
+		}else{
+			logger.info("[UPDATE]:"+lawyer.toString());
+		}
+		return "SUCCESS";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/createOrUpdateOrDelete", method = RequestMethod.POST)
 	@ResponseBody
-	public void add(Long id, String name, Long age, String gender, String mobile,
-					   String email, String degree, String university,
-					   Long workingYears, String status, String createDate){
-		logger.info(name);
+	public void add(Lawyer lawyer, HttpServletRequest request){
+		logger.info("[ADD]:"+lawyer.toString());
 	}
     
     @RequestMapping("/insert")

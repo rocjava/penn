@@ -12,6 +12,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:config/applicationContext.xml,classpath:config/mybatis-configuration.xml</param-value>
   </context-param>
+
   <context-param>
     <param-name>log4jRefreshInterval</param-name>
     <param-value>60000</param-value>
@@ -21,7 +22,6 @@
       org.springframework.web.util.Log4jConfigListener
     </listener-class>
   </listener>
-
 
   <!-- 编码格式 -->
   <filter>
@@ -39,6 +39,27 @@
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <!-- HiddenHttpMethodFilter过滤器可以将POST请求转化为put请求和delete请求! -->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
+
+  <filter>
+    <filter-name>HttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HttpMethodFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
   </filter-mapping>
 
   <!-- spring mvc servlet -->
