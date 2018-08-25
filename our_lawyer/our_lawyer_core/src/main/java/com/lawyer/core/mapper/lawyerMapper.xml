@@ -21,20 +21,46 @@
 	</resultMap>
 
     <sql id="base_column_list">
-            id,
-            name,
-        	age,
-        	gender,
-        	mobile,
-        	email,
-        	telephone,
-        	level,
-        	working_years,
-        	degree,
-        	university,
-        	status,
-        	create_date,
-        	last_modify_date
+            id, name,age,gender,mobile,email,telephone,level,working_years,degree,university,status,create_date,last_modify_date
+    </sql>
+    <sql id="base_insert_column_list">
+            name,age,gender,mobile,email,telephone,level,working_years,degree,university,status,create_date,last_modify_date
+    </sql>
+    <sql id="conditions">
+        WHERE 1=1
+        <if test="lawyer.name != null and lawyer.name != ''" >
+            and name = #{lawyer.name}
+        </if>
+        <if test="lawyer.age != null" >
+            and age = #{lawyer.age}
+        </if>
+        <if test="lawyer.gender != null and lawyer.gender != ''" >
+            and gender = #{lawyer.gender}
+        </if>
+        <if test="lawyer.mobile != null and lawyer.mobile != ''" >
+            and mobile = #{lawyer.mobile}
+        </if>
+        <if test="lawyer.email != null and lawyer.email != ''" >
+            and email = #{lawyer.email}
+        </if>
+        <if test="lawyer.telephone != null and lawyer.telephone != ''" >
+            and telephone = #{lawyer.telephone}
+        </if>
+        <if test="lawyer.level != null" >
+            and level = #{lawyer.level}
+        </if>
+        <if test="lawyer.workingYears != null" >
+            and working_years = #{lawyer.workingYears}
+        </if>
+        <if test="lawyer.degree != null" >
+            and degree = #{lawyer.degree}
+        </if>
+        <if test="lawyer.university != null and lawyer.university != ''" >
+            and university = #{lawyer.university}
+        </if>
+        <if test="lawyer.status != null and lawyer.status != ''" >
+            and status = #{lawyer.status}
+        </if>
     </sql>
     <select id="findAll" resultMap="baseResultMap">
         select
@@ -42,16 +68,19 @@
         from ly_lawyer limit 0,100
     </select>
 
-    <select id="findByPage" resultMap="baseResultMap">
+    <select id="findByPage" resultMap="baseResultMap" parameterType="map">
         select
         <include refid="base_column_list" />
-        from ly_lawyer limit #{startRow},#{endRow}
+        from ly_lawyer
+        <include refid="conditions" />
+        limit #{startRow},#{endRow}
     </select>
 
-    <select id="getTotalCounts" resultType="int">
+    <select id="getTotalCounts" resultType="int" parameterType="map">
         select
         count(1)
-        from ly_lawyer;
+        from ly_lawyer
+        <include refid="conditions" />
     </select>
     <select id="findById" resultType="com.lawyer.core.entity.Lawyer" parameterType="int">
         select
@@ -59,21 +88,11 @@
         from ly_lawyer 
         where id=#{id}
     </select>
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.lawyer.core.entity.Lawyer">
+
+    <!-- 新增-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.lawyer.core.entity.Lawyer" >
         INSERT INTO ly_lawyer (
-        	name,
-        	age,
-        	gender,
-        	mobile,
-        	email,
-        	telephone,
-        	level,
-        	working_years,
-        	degree,
-        	university,
-        	status,
-        	create_date,
-        	last_modify_date
+            <include refid="base_insert_column_list" />
         ) VALUES (
             #{name},
             #{age},
@@ -87,25 +106,13 @@
             #{university},
             #{status},
             #{createDate},
-            #{lastModifyDate}
+            now()
         )
     </insert>
     
     <insert id="insertForBatch" parameterType="java.util.List">
         INSERT INTO ly_lawyer (
-        	name,
-        	age,
-        	gender,
-        	mobile,
-        	email,
-        	telephone,
-        	level,
-        	working_years,
-        	degree,
-        	university,
-        	status,
-        	create_date,
-        	last_modify_date
+            <include refid="base_insert_column_list" />
         ) VALUES
         <foreach collection="list" separator="," index="index" item="lawyer">
             (

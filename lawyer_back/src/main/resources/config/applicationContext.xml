@@ -101,10 +101,10 @@
     </aop:config>
 
     <!-- memcached -->
-    <bean id="apaMemcachedClientBuilder" class="com.penn.memcached.ApaMemcachedClientBuilder">
+    <bean id="commMemcachedClientBuilder" class="com.penn.memcached.CommMemcachedClientBuilder">
 	    <property name="servers" value="${memcached.server}"/>
 	</bean>
-	<bean id="apaMemcachedClient" factory-bean="apaMemcachedClientBuilder" factory-method="build" destroy-method="shutdown"/>
+	<bean id="commMemcachedClient" factory-bean="commMemcachedClientBuilder" factory-method="build" destroy-method="shutdown"/>
 
 
 </beans>

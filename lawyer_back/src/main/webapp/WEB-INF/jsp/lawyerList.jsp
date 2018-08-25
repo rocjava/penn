@@ -120,9 +120,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label col-md-3 no-padding-right" for="university">学校:</label>
-
                                 <div class="col-md-6">
-                                    <input type="text" name="university" id="university" placeholder="University" class="form-control"/>
+                                    <input type="text" name="university" id="university" autocomplete="off" placeholder="University" class="form-control"/>
                                 </div>
                             </div>
 

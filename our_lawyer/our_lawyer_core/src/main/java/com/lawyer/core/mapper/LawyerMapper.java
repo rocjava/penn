@@ -11,13 +11,13 @@ public interface LawyerMapper {
 	
     List<Lawyer> findAll();
 
-    List<Lawyer> findByPage(Lawyer laweyer, @Param(value="startRow")int startRow, @Param(value="endRow")int endRow);
+    List<Lawyer> findByPage(@Param(value="lawyer")Lawyer laweyer, @Param(value="startRow")int startRow, @Param(value="endRow")int endRow);
 
     Lawyer findById(int id);
 
-    void insert(Lawyer lawyer);
+    int insert(Lawyer lawyer);
     
-    void insertForBatch(List<Lawyer> list);
+    int insertForBatch(List<Lawyer> list);
 
-    int getTotalCounts(Lawyer laweyer);
+    int getTotalCounts(@Param(value="lawyer")Lawyer lawyer);
 }

@@ -2,7 +2,7 @@ package com.penn.mobile.lawyer.controller;
 import com.lawyer.common.Constant;
 import com.lawyer.core.entity.Lawyer;
 import com.lawyer.service.LawyerService;
-import com.penn.memcached.ApaMemcachedClient;
+import com.penn.memcached.CommMemcachedClient;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class LawyerController {
 	private LawyerService lawyerService;
 
 	@Autowired
-	private ApaMemcachedClient tntMemcachedClient;
+	private CommMemcachedClient commMemcachedClient;
 	
 	//http://localhost:8080/lawymvc/lawyer/10015136/preDetail.do
 	@RequestMapping("/{id}/preDetail")
@@ -39,10 +39,10 @@ public class LawyerController {
 				logger.info("查询lawyer id为空!");
 				return null;
 			}
-			lawyer = tntMemcachedClient.get(Constant.ZHH_LAWYER+id);
+			lawyer = commMemcachedClient.get(Constant.ZHH_LAWYER+id);
 			if(lawyer == null ){
 				lawyer = lawyerService.findById(Integer.parseInt(id));
-				tntMemcachedClient.set(Constant.ZHH_LAWYER+id, lawyer, Constant.INFO_CACHE_TIMELIMIT);
+				commMemcachedClient.set(Constant.ZHH_LAWYER+id, lawyer, Constant.INFO_CACHE_TIMELIMIT);
 			}
 			modelMap.put("lawyer", lawyer);
 			
@@ -61,10 +61,10 @@ public class LawyerController {
 				logger.info("查询lawyer id为空!");
 				return null;
 			}
-			lawyer = tntMemcachedClient.get(Constant.ZHH_LAWYER+id);
+			lawyer = commMemcachedClient.get(Constant.ZHH_LAWYER+id);
 			if(lawyer == null ){
 				lawyer = lawyerService.findById(Integer.parseInt(id));
-				tntMemcachedClient.set(Constant.ZHH_LAWYER+id, lawyer, Constant.INFO_CACHE_TIMELIMIT);
+				commMemcachedClient.set(Constant.ZHH_LAWYER+id, lawyer, Constant.INFO_CACHE_TIMELIMIT);
 			}
 			modelMap.put("lawyer", lawyer);
 			
@@ -86,10 +86,10 @@ public class LawyerController {
     	List<Lawyer> list = null;
     	long start = System.currentTimeMillis();
 		try{
-			list = tntMemcachedClient.get(Constant.ZHH_LAWYERS);
+			list = commMemcachedClient.get(Constant.ZHH_LAWYERS);
 			if(list == null ){
 				list = lawyerService.findAll();
-				tntMemcachedClient.set(Constant.ZHH_LAWYERS, list, Constant.INFO_CACHE_TIMELIMIT);
+				commMemcachedClient.set(Constant.ZHH_LAWYERS, list, Constant.INFO_CACHE_TIMELIMIT);
 			}
 		}catch(Exception e){
 			logger.info("Exception happened when list lawyers! e:"+e);

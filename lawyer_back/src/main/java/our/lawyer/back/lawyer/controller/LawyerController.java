@@ -3,20 +3,16 @@ import com.lawyer.common.Constant;
 import com.lawyer.core.entity.Lawyer;
 import com.lawyer.service.LawyerService;
 import com.penn.jqgrid.DataResponse;
-import com.penn.memcached.ApaMemcachedClient;
+import com.penn.memcached.CommMemcachedClient;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RequestMapping("back/lawyer")
@@ -29,7 +25,7 @@ public class LawyerController {
 	private LawyerService lawyerService;
 
 	@Autowired
-	private ApaMemcachedClient tntMemcachedClient;
+	private CommMemcachedClient commMemcachedClient;
 
 	@RequestMapping("/detail")
 	public String detail(String id, ModelMap modelMap,HttpServletRequest request) {
@@ -39,10 +35,10 @@ public class LawyerController {
 				logger.info("查询lawyer id为空!");
 				return null;
 			}
-			lawyer = tntMemcachedClient.get(Constant.ZHH_LAWYER+id);
+			lawyer = commMemcachedClient.get(Constant.ZHH_LAWYER+id);
 			if(lawyer == null ){
 				lawyer = lawyerService.findById(Integer.parseInt(id));
-				tntMemcachedClient.set(Constant.ZHH_LAWYER+id, lawyer, Constant.INFO_CACHE_TIMELIMIT);
+				commMemcachedClient.set(Constant.ZHH_LAWYER+id, lawyer, Constant.INFO_CACHE_TIMELIMIT);
 			}
 			modelMap.put("lawyer", lawyer);
 			
@@ -76,11 +72,11 @@ public class LawyerController {
 		int endRow = currPage * pageSize ;
 		List<Lawyer> list = new ArrayList<>();
 		try{
-			//list = tntMemcachedClient.get(Constant.ZHH_LAWYERS);
+			//list = commMemcachedClient.get(Constant.ZHH_LAWYERS);
 //			if(list == null ){
 
 			list = lawyerService.findByPage(lawyer, startRow, endRow);
-			//tntMemcachedClient.set(Constant.ZHH_LAWYERS, list, Constant.INFO_CACHE_TIMELIMIT);
+			//commMemcachedClient.set(Constant.ZHH_LAWYERS, list, Constant.INFO_CACHE_TIMELIMIT);
 //			}
 		}catch(Exception e){
 			logger.info("Exception happened when list lawyers! e:"+e);
@@ -113,37 +109,14 @@ public class LawyerController {
 
 	@RequestMapping(value = "/createOrUpdateOrDelete", method = RequestMethod.POST)
 	@ResponseBody
-	public void add(Lawyer lawyer, HttpServletRequest request){
+	public String create(Lawyer lawyer, HttpServletRequest request){
+		lawyerService.insert(lawyer);
 		logger.info("[ADD]:"+lawyer.toString());
+		return "index";
 	}
-    
-    @RequestMapping("/insert")
-    public String insert(ModelMap model) {
-    	Lawyer lawyer = null;
-    	Random rd = new Random();
-    	logger.info("insert start");
-    	long starTime=System.currentTimeMillis();
-    	for(int i=0;i<12;i++){
-    		for(int j=0;j<7;j++){
-    			lawyer = new Lawyer();
-    			lawyer.setName("penn"+i+j);
-    			lawyer.setAge(rd.nextInt(35)+25);
-    			lawyer.setDegree("1");
-    			lawyer.setMobile("15600008888");
-    			lawyer.setEmail("test12345@qq.com");
-    			lawyer.setCreateDate(new Date());
-    			lawyer.setLastModifyDate(new Date());
-    			lawyer.setUniversity("复旦大学");
-    			lawyer.setLevel("9");
-    			lawyerService.insert(lawyer);
-    		}
-    	}
-    	long endTime=System.currentTimeMillis();
-    	logger.info("insert end");
-    	logger.info("执行总时间:"+(endTime-starTime));
-        return "index";
-    }
-    
+
+
+	//生成随机数据
     @RequestMapping("/insertBatch")
     public String insertBatch(ModelMap model) {
     	Lawyer lawyer = null;
@@ -151,27 +124,29 @@ public class LawyerController {
     	List<Lawyer> list = new ArrayList<Lawyer>();
     	logger.info("insert start");
     	long starTime=System.currentTimeMillis();
-    	for(int i=0;i<12;i++){
-    		for(int j=0;j<3;j++){
+    	for(int i=0;i<8;i++){
+    		for(int j=0;j<4;j++){
     			lawyer = new Lawyer();
+
     			lawyer.setName("penn_"+i+j);
     			lawyer.setAge(rd.nextInt(35)+25);
     			lawyer.setDegree("1");
+				lawyer.setGender("男");
     			lawyer.setMobile("15600008888");
     			lawyer.setEmail("123456@qq.com");
     			lawyer.setCreateDate(new Date());
     			lawyer.setLastModifyDate(new Date());
     			lawyer.setUniversity("同济大学");
     			lawyer.setLevel("1");
+				lawyer.setStatus("有效");
+    			lawyer.setWorkingYears(5);
     			list.add(lawyer);
     		}
-    		logger.info("第"+(i+1)+"次");
     		lawyerService.insertForBatch(list);
     		list.clear();
     	}
     	long endTime=System.currentTimeMillis();
-    	logger.info("insert end");
-    	logger.info("执行总时间:"+(endTime-starTime));
+    	logger.info("insertBatch执行总时间:"+(endTime-starTime));
         return "index";
     }
 }
