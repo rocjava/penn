@@ -25,18 +25,8 @@
 
 </head>
 <body>
-<div class="page-content">
-    <div class="page-header">
-        <h1>
-            控制台
-            <small>
-                <i class="icon-double-angle-right"></i>
-                查看
-            </small>
-        </h1>
-    </div><!-- /.page-header -->
 
-    <div class="row">
+
         <div class="col-md-12">
             <!-- PAGE CONTENT BEGINS -->
 
@@ -74,8 +64,8 @@
 
             <!-- PAGE CONTENT ENDS -->
         </div><!-- /.col -->
-    </div><!-- /.row -->
-    <div class="row">
+
+
         <div class="col-md-12">
             <table class="table table-striped table-bordered table-hover">
                 <thead>
@@ -175,8 +165,7 @@
                 </ul>
             </div>
         </div>
-    </div>
-</div><!-- /.page-content -->
+
 
 <%--<script src="<%=basePath%>/assets/js/ace-elements.min.js"></script>--%>
 <%--<script src="<%=basePath%>/assets/js/ace-extra.min.js"></script>--%>

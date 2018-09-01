@@ -74,7 +74,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springMvc</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 
   <!-- spring监听器 -->
@@ -82,10 +82,6 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-  <!-- 防止spring内存溢出监听器 -->
-  <listener>
-    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-  </listener>
 
   <!-- 默认首页 -->
   <welcome-file-list>

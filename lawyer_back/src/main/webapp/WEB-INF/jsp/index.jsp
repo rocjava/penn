@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-skins.min.css" />
-
-
+    <link rel="stylesheet" href="<%=basePath%>/assets/css/jquery-ui-1.10.3.full.min.css">
     <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="<%=basePath%>/assets/js/jquery-ui-1.10.3.full.min.js"></script>
+
 
     <script src="<%=basePath%>/assets/js/bootstrap.min.js"></script>
     <script src="<%=basePath%>/assets/js/ace.min.js"></script>
@@ -81,46 +82,32 @@
 
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                        <button class="btn btn-success">
-                            <i class="icon-signal"></i>
-                        </button>
 
-                        <button class="btn btn-info">
-                            <i class="icon-pencil"></i>
-                        </button>
-
-                        <button class="btn btn-warning">
-                            <i class="icon-group"></i>
-                        </button>
-
-                        <button class="btn btn-danger">
-                            <i class="icon-cogs"></i>
-                        </button>
-                    </div>
-
-                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-                        <span class="btn btn-success"></span>
-
-                        <span class="btn btn-info"></span>
-
-                        <span class="btn btn-warning"></span>
-
-                        <span class="btn btn-danger"></span>
-                    </div>
                 </div><!-- #sidebar-shortcuts -->
 
                 <ul class="nav nav-list">
-                    <li class="active">
-                        <a href="index.html">
+                    <li class="navLi active">
+                        <a href="${pageContext.request.contextPath}/welcome.do" target="mainFrame">
                             <i class="icon-dashboard"></i>
                             <span class="menu-text"> 控制台 </span>
+                        </a>
+                    </li>
+                    <li class="navLi">
+                        <a href="${pageContext.request.contextPath}/lawyer/lawyerList.do" navId="1" target="mainFrame_1">
+                            <i class="icon-tag"></i>
+                            <span class="menu-text"> 律师信息 </span>
+                        </a>
+                    </li>
+                    <li class="navLi">
+                        <a href="${pageContext.request.contextPath}/welcome.do" navId="2" target="mainFrame_2">
+                            <i class="icon-tag"></i>
+                            <span class="menu-text"> Add Tab </span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-list"></i>
-                            <span class="menu-text"> 律师管理 </span>
+                            <span class="menu-text"> 律所管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -129,14 +116,14 @@
                             <li>
                                 <a href="table.html" target="mainFrame">
                                     <i class="icon-double-angle-right"></i>
-                                    增删查改
+                                    <span>增删查改</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="blank.html" target="mainFrame">
                                     <i class="icon-double-angle-right"></i>
-                                    空白页
+                                    <span>空白页</span>
                                 </a>
                             </li>
                         </ul>
@@ -166,45 +153,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="table.html" target="mainFrame">
-                            <i class="icon-tag"></i>
-                            <span class="menu-text"> 律所信息 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/lawyer/lawyerList.do" target="mainFrame">
-                            <i class="icon-tag"></i>
-                            <span class="menu-text"> 通用信息 </span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-edit"></i>
                             <span class="menu-text"> 服务范围 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="tables.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    简单 &amp; 动态
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="jqgrid.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    jqGrid plugin
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-calendar"></i>
-                            <span class="menu-text"> 律所信息 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -265,15 +216,63 @@
                 </script>
             </div>
 
+
+            <!-- /.main-content -->
+
+<%--
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Nunc tincidunt</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+                </ul>
+                <div id="tabs-1">
+                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+                </div>
+            </div>
+
+--%>
             <div class="main-content">
-
-                <iframe src="${pageContext.request.contextPath}/lawyer/lawyerList.do" id="mainFrame" name="mainFrame"
-                        frameborder="0" width="100%" height="890px" frameBorder="0">
-                </iframe>
-
-
-            </div><!-- /.main-content -->
+                <div class="" id="tabs">
+                    <ul class="nav nav-tabs" style="height: 37px;">
+                        <li class="active"><a data-toggle='tab' href="#div_d">首页</a></li>
+                    </ul>
+                    <div class="tab-content" style="border:0">
+                        <div id="div_d" class="tab-pane"><iframe src="${pageContext.request.contextPath}/welcome.do" frameborder="0" width="1132px" height='750px' frameBorder='0'></iframe></div>
+                    </div>
+                </div>
+            </div>
         </div><!-- /.main-container-inner -->
+
+
     </div><!-- /.main-container -->
+    <script>
+        $( function() {
+            var width = $(window).width()-190;
+            var tabs = $( "#tabs" ).tabs();
+
+            var template_tab = "<li ><a data-toggle='tab' href='href_t'>label_t</a></li>";
+            var template_content = "<div id='id_t' class='tab-pane'><iframe name='mainFrame' frameborder='0' width='"+width+"px' height='750px' frameBorder='0' display='block'></iframe></div>";
+
+
+            $(".navLi").on("click", function(){
+                var navId = $(this).children("a").attr('navId');
+                var target = $(this).children("a").attr("target");
+                var label = $(this).find('span').eq(0).html();
+                console.log(navId+','+target+','+label);
+
+                $('.nav-tabs li.ui-tabs-active').removeClass('ui-tabs-active').removeClass('ui-state-active');
+
+
+                var li = $( template_tab.replace( /href_t/g, "#div_" + navId ).replace( /label_t/g, label ) );
+                var div = $( template_content.replace( /id_t/g, 'div_'+navId ).replace( 'mainFrame', 'mainFrame_'+navId ));
+                tabs.find( ".nav-tabs" ).append( li );
+                tabs.find( ".tab-content" ).append( div );
+                tabs.tabs( "refresh" );
+                $(".nav-tabs li:last").addClass('ui-tabs-active').addClass('ui-state-active');
+                $(".nav-tabs li:last").trigger('click');
+            });
+
+
+        });
+    </script>
 </body>
 </html>
