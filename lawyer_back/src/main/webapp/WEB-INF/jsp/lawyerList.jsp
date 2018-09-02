@@ -30,24 +30,9 @@
 <body>
 
 
-<div class="breadcrumbs" id="breadcrumbs">
-    <ul class="breadcrumb">
-        <li>
-            <i class="icon-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-
-        <li>
-            <a href="#">律师管理</a>
-        </li>
-        <li class="active">通用页</li>
-    </ul><!-- .breadcrumb -->
-</div>
-
-<div class="page-content">
-    <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal" role="form" id="form_query" action="">
+                <br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4">
@@ -150,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="btn-group ">
@@ -162,23 +147,21 @@
                                 <i class="icon-undo"></i>
                                 重置
                             </button>
-
                         </div>
                     </div>
                 </div>
             </form>
-            <hr>
+            <br>
         </div>
-    </div>
-    <div class="row">
+
         <div class="col-md-12">
             <!-- Table -->
             <table id="gridTable" class="table table-striped table-bordered table-hover"></table>
             <div id="gridPager"></div>
 
         </div>
-    </div>
-</div><!-- /.page-content -->
+
+
 
 <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
 <script src="<%=basePath%>/assets/js/bootstrap.min.js"></script>
@@ -237,6 +220,7 @@
             url: "<%=basePath%>/back/lawyer/list.do",
             datatype: "json",
             mtype : "post",
+            //width : width,
             height: 360,
             colNames:['主键','名称','年龄', '性别', '手机','邮箱','学历','大学','工作年限','状态','创建时间'],
             colModel:[
@@ -244,22 +228,26 @@
                     name:'id',
                     index:'id',
                     key : true,
-                    editable: true
+                    editable: true,
+                    width:100
                 },
                 {
                     name:'name',
                     index:'name',
-                    editable: true
+                    editable: true,
+                    width:100
                 },
                 {
                     name:'age',
                     index:'age' ,
+                    width:50,
                     editable: true
                 },
                 {
                     name:'gender',
                     index:'gender',
                     editable: true,
+                    width:50,
                     edittype: 'checkbox',
                     editoptions: {value:"男:女"},
                     unformat: aceSwitch
@@ -268,17 +256,20 @@
                 {
                     name:'mobile',
                     index:'mobile' ,
+                    width:150,
                     editable: true
                 },
                 {
                     name:'email',
                     index:'email',
+                    width:150,
                     editable: true
                 },
                 {
                     name:'degree',
                     index:'degree' ,
                     editable: true ,
+                    width:100,
                     edittype:"select",
                     editoptions:{value:"1:大专;2:本科;3:研究生;4:博士"},
                     formatter:function(value,options,row){
@@ -296,11 +287,13 @@
                 {
                     name:'university',
                     index:'university' ,
+                    width:100,
                     editable: true
                 },
                 {
                     name:'workingYears',
                     index:'workingYears' ,
+                    width:50,
                     editable: true
                 },
                 {
@@ -308,6 +301,7 @@
                     index:'status' ,
                     editable: true ,
                     edittype:"checkbox" ,
+                    width:100,
                     editoptions: {value:"有效:无效"} ,
                     unformat: aceSwitch
                 },
@@ -315,6 +309,7 @@
                     name:'createDate',
                     index:'createDate' ,
                     editable: true ,
+                    width:120,
                     sorttype:"date",
                     formatter:function(value,options,row){
                         var date =  new Date(value);
@@ -451,7 +446,9 @@
                 url: "<%=basePath%>/back/lawyer/list.do",
                 postData: {'name': userName,'university': university},
                 datatype: "json",
-                mtype : "post"
+                mtype : "post",
+                page : 1,///
+                rows : 10
             }).trigger('reloadGrid');
         });
     });
