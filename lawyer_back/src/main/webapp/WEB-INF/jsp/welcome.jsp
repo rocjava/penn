@@ -27,7 +27,10 @@
 <body>
 
 
+
         <div class="row">
+
+
             <!-- PAGE CONTENT BEGINS -->
 
             <div class="well">
@@ -67,6 +70,7 @@
 
 
         <div class="row">
+
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                 <tr>

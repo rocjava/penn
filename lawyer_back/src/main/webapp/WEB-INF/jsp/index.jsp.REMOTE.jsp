@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-skins.min.css" />
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="<%=basePath%>/assets/css/jquery-ui-1.10.3.full.min.css">
     <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
     <script src="<%=basePath%>/assets/js/jquery-ui-1.10.3.full.min.js"></script>
 
@@ -81,6 +79,7 @@
             <a class="menu-toggler" id="menu-toggler" href="#">
                 <span class="menu-text"></span>
             </a>
+
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
 
@@ -217,13 +216,27 @@
                 </script>
             </div>
 
+
+            <!-- /.main-content -->
+
+<%--
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Nunc tincidunt</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+                </ul>
+                <div id="tabs-1">
+                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+                </div>
+            </div>
+
+--%>
             <div class="main-content">
-                <div class="tabbable" id="tabs">
-                    <ul class="nav nav-tabs" id="tabUl" style="height: 34px;">
-                        <li class="active" style="margin-left: 12px;"><a data-toggle='tab' href="#div_d"><i class="green icon-home bigger-110"></i>首页&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></a></li>
+                <div class="" id="tabs">
+                    <ul class="nav nav-tabs" style="height: 37px;">
+                        <li class="active"><a data-toggle='tab' href="#div_d">首页</a></li>
                     </ul>
-                    <div class="tab-content" style="border:0" id="tabContent">
-                        <div id="div_d" class="tab-pane active"><iframe src="${pageContext.request.contextPath}/welcome.do" frameborder="0" width="100%" height='750px' frameBorder='0'></iframe></div>
+                    <div class="tab-content" style="border:0">
+                        <div id="div_d" class="tab-pane"><iframe src="${pageContext.request.contextPath}/welcome.do" frameborder="0" width="1132px" height='750px' frameBorder='0'></iframe></div>
                     </div>
                 </div>
             </div>
@@ -234,8 +247,10 @@
     <script>
         $( function() {
             var width = $(window).width()-190;
-            var template_tab = "<li class='active'><a data-toggle='tab' href='href_t'>label_t</a></li>";
-            var template_content = "<div id='id_t' class='tab-pane active'><iframe name='mainFrame' frameborder='0' width='100%' height='750px' frameBorder='0' display='block'></iframe></div>";
+            var tabs = $( "#tabs" ).tabs();
+
+            var template_tab = "<li ><a data-toggle='tab' href='href_t'>label_t</a></li>";
+            var template_content = "<div id='id_t' class='tab-pane'><iframe name='mainFrame' frameborder='0' width='"+width+"px' height='750px' frameBorder='0' display='block'></iframe></div>";
 
 
             $(".navLi").on("click", function(){
@@ -244,18 +259,18 @@
                 var label = $(this).find('span').eq(0).html();
                 console.log(navId+','+target+','+label);
 
-                $('#tabUl').children('li').each(function(){
-                    $(this).removeClass('active');
-                });
-                $('#tabContent').children('div').each(function(){
-                    $(this).removeClass('active');
-                });
+                $('.nav-tabs li.ui-tabs-active').removeClass('ui-tabs-active').removeClass('ui-state-active');
+
 
                 var li = $( template_tab.replace( /href_t/g, "#div_" + navId ).replace( /label_t/g, label ) );
                 var div = $( template_content.replace( /id_t/g, 'div_'+navId ).replace( 'mainFrame', 'mainFrame_'+navId ));
-                $('#tabUl').append( li );
-                $('#tabContent').append( div );
+                tabs.find( ".nav-tabs" ).append( li );
+                tabs.find( ".tab-content" ).append( div );
+                tabs.tabs( "refresh" );
+                $(".nav-tabs li:last").addClass('ui-tabs-active').addClass('ui-state-active');
+                $(".nav-tabs li:last").trigger('click');
             });
+
 
         });
     </script>

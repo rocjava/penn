@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-skins.min.css" />
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
@@ -216,7 +215,6 @@
                     try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
                 </script>
             </div>
-
             <div class="main-content">
                 <div class="tabbable" id="tabs">
                     <ul class="nav nav-tabs" id="tabUl" style="height: 34px;">
@@ -228,15 +226,12 @@
                 </div>
             </div>
         </div><!-- /.main-container-inner -->
-
-
     </div><!-- /.main-container -->
     <script>
         $( function() {
             var width = $(window).width()-190;
             var template_tab = "<li class='active'><a data-toggle='tab' href='href_t'>label_t</a></li>";
             var template_content = "<div id='id_t' class='tab-pane active'><iframe name='mainFrame' frameborder='0' width='100%' height='750px' frameBorder='0' display='block'></iframe></div>";
-
 
             $(".navLi").on("click", function(){
                 var navId = $(this).children("a").attr('navId');
@@ -256,7 +251,6 @@
                 $('#tabUl').append( li );
                 $('#tabContent').append( div );
             });
-
         });
     </script>
 </body>
