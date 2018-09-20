@@ -32,4 +32,12 @@ public class CommonController {
         ModelAndView model = new ModelAndView("lawyerList");
         return model;
     }
+
+
+    @RequestMapping("/user/userList")
+    @ResponseBody
+    public ModelAndView userList() {
+        ModelAndView model = new ModelAndView("userList");
+        return model;
+    }
 }

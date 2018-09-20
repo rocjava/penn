@@ -13,13 +13,13 @@
 		<setting name="defaultExecutorType" value="SIMPLE" /> <!-- BATCH, REUSE -->
 		<setting name="defaultStatementTimeout" value="25000" />
 		<setting name="safeRowBoundsEnabled" value="false" />
-		<setting name="mapUnderscoreToCamelCase" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="localCacheScope" value="SESSION" />
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
 	</settings>
 	<typeAliases>
 		<typeAlias alias="Lawyer" type="com.lawyer.core.entity.Lawyer" />
-		<!--<typeAlias alias="Order" type="com.penn.order.model.Order" /> -->
+		<typeAlias alias="User" type="com.lawyer.core.entity.User" />
 	</typeAliases>
 </configuration>	

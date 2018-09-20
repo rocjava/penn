@@ -23,7 +23,14 @@
     <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
     <script src="<%=basePath%>/assets/js/jquery-ui-1.10.3.full.min.js"></script>
 
-
+    <style>
+        .nav-tabs>li.active>a>[class*="icon-"] {
+            opacity : .5;
+        }
+        .nav-tabs>li.active>a>[class*="icon-"]:hover {
+            opacity : 1;
+        }
+    </style>
     <script src="<%=basePath%>/assets/js/bootstrap.min.js"></script>
     <script src="<%=basePath%>/assets/js/ace.min.js"></script>
 
@@ -102,13 +109,13 @@
                     <li class="navLi">
                         <a href="${pageContext.request.contextPath}/welcome.do" navId="2" target="mainFrame_2">
                             <i class="icon-tag"></i>
-                            <span class="menu-text"> Add Tab </span>
+                            <span class="menu-text"> 律所管理 </span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-list"></i>
-                            <span class="menu-text"> 律所管理 </span>
+                            <span class="menu-text"> 权限管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -117,14 +124,26 @@
                             <li>
                                 <a href="table.html" target="mainFrame">
                                     <i class="icon-double-angle-right"></i>
-                                    <span>增删查改</span>
+                                    <span>用户管理</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="blank.html" target="mainFrame">
                                     <i class="icon-double-angle-right"></i>
-                                    <span>空白页</span>
+                                    <span>角色管理</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blank.html" target="mainFrame">
+                                    <i class="icon-double-angle-right"></i>
+                                    <span>菜单管理</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blank.html" target="mainFrame">
+                                    <i class="icon-double-angle-right"></i>
+                                    <span>权限管理</span>
                                 </a>
                             </li>
                         </ul>
@@ -132,7 +151,7 @@
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-desktop"></i>
-                            <span class="menu-text"> 内容管理 </span>
+                            <span class="menu-text"> 预约管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -141,14 +160,14 @@
                             <li>
                                 <a href="news.html" target="mainFrame">
                                     <i class="icon-double-angle-right"></i>
-                                    新闻管理
+                                    预约时间
                                 </a>
                             </li>
 
                             <li>
                                 <a href="jqgrid.html">
                                     <i class="icon-double-angle-right"></i>
-                                    文章管理
+                                    预约管理
                                 </a>
                             </li>
                         </ul>
@@ -156,7 +175,7 @@
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-edit"></i>
-                            <span class="menu-text"> 服务范围 </span>
+                            <span class="menu-text"> 动态管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -180,7 +199,7 @@
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-list-alt"></i>
-                            <span class="menu-text"> 系统管理 </span>
+                            <span class="menu-text"> 留言管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -220,7 +239,7 @@
             <div class="main-content">
                 <div class="tabbable" id="tabs">
                     <ul class="nav nav-tabs" id="tabUl" style="height: 34px;">
-                        <li class="active" style="margin-left: 12px;"><a data-toggle='tab' href="#div_d"><i class="green icon-home bigger-110"></i>首页&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></a></li>
+                        <li class="active" style="margin-left: 12px;"><a data-toggle='tab' href="#div_d"><i class="green icon-home bigger-110"></i>首页&nbsp;&nbsp;<i class="grey icon-remove"></i></a></li>
                     </ul>
                     <div class="tab-content" style="border:0" id="tabContent">
                         <div id="div_d" class="tab-pane active"><iframe src="${pageContext.request.contextPath}/welcome.do" frameborder="0" width="100%" height='750px' frameBorder='0'></iframe></div>
@@ -234,7 +253,7 @@
     <script>
         $( function() {
             var width = $(window).width()-190;
-            var template_tab = "<li class='active'><a data-toggle='tab' href='href_t'>label_t</a></li>";
+            var template_tab = "<li class='active'><a data-toggle='tab' href='href_t'>label_t&nbsp;&nbsp;<i class=\"grey icon-remove\"></i></a></li>";
             var template_content = "<div id='id_t' class='tab-pane active'><iframe name='mainFrame' frameborder='0' width='100%' height='750px' frameBorder='0' display='block'></iframe></div>";
 
 

@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.lawyer.core.mapper.LawyerMapper">
+
 	<resultMap id="baseResultMap" type="com.lawyer.core.entity.Lawyer">
 	  <id column="id" jdbcType="INTEGER" property="id" />
 	  <result column="name" jdbcType="VARCHAR" property="name" />
