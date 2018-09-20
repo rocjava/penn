@@ -1,7 +1,7 @@
 package our.lawyer.back.user.controller;
 
-import com.lawyer.core.entity.User;
-import com.lawyer.service.UserService;
+import com.lawyer.core.entity.*;
+import com.lawyer.service.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
