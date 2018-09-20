@@ -107,9 +107,9 @@
                         </a>
                     </li>
                     <li class="navLi">
-                        <a href="${pageContext.request.contextPath}/welcome.do" navId="2" target="mainFrame_2">
+                        <a href="${pageContext.request.contextPath}/user/userList.do" navId="2" target="mainFrame_2">
                             <i class="icon-tag"></i>
-                            <span class="menu-text"> 律所管理 </span>
+                            <span class="menu-text"> 用户管理 </span>
                         </a>
                     </li>
                     <li>
