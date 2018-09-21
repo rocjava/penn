@@ -13,10 +13,10 @@
     </resultMap>
 
     <sql id="base_column">
-        id, role_name,description,enabled,create_time
+        id, role_name,description,enabled,update_time,create_time
     </sql>
     <sql id="base_column_insert">
-        role_name,description,enabled,create_time
+        role_name,description,enabled,update_time,create_time
     </sql>
 
     <sql id="conditions">

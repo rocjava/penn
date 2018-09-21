@@ -40,4 +40,10 @@ public class CommonController {
         ModelAndView model = new ModelAndView("userList");
         return model;
     }
+    @RequestMapping("/role/roleList")
+    @ResponseBody
+    public ModelAndView roleList() {
+        ModelAndView model = new ModelAndView("roleList");
+        return model;
+    }
 }

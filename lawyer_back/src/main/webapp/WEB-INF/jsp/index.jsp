@@ -112,6 +112,12 @@
                             <span class="menu-text"> 用户管理 </span>
                         </a>
                     </li>
+                    <li class="navLi">
+                        <a href="${pageContext.request.contextPath}/role/roleList.do" navId="3" target="mainFrame_3">
+                            <i class="icon-tag"></i>
+                            <span class="menu-text"> 角色管理 </span>
+                        </a>
+                    </li>
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-list"></i>
