@@ -25,18 +25,19 @@
 </head>
 <body>
 
-    <div class="col-md-12">
-        <br>
-        <form class="form-inline" role="form" id="form_query" action="">
+    <div class="col-md-9">
+        <form class="form-horizontal" role="form" id="form_query" action="">
+            <br>
+            <br>
             <div class="col-md-12">
                 <div class="form-group col-md-4">
-                    <label class="control-label col-md-3 no-padding-right" for="realName">姓名:</label>
+                    <label class="control-label col-md-4 no-padding-right" for="realName">姓名:</label>
                     <div class="col-md-6">
                         <input type="text" name="realName" id="realName" placeholder="Real name" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="control-label col-md-3 no-padding-right"> 是否显示: </label>
+                    <label class="control-label col-md-4 no-padding-right"> 是否显示: </label>
                     <div class="col-md-6">
                         <label>
                             <input name="switch-field-1" class="ace ace-switch ace-switch-5" type="checkbox" />
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label class="control-label col-md-3 no-padding-right" for="form-field-select-1">学历:</label>
+                    <label class="control-label col-md-4 no-padding-right" for="form-field-select-1">学历:</label>
                     <div class="col-md-6">
                         <select class="form-control" id="form-field-select-1">
                             <option value="" selected>请选择</option>
@@ -58,20 +59,23 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
         </form>
-        <br>
-        <div class="row align-center">
-            <div class="btn-group ">
-                <button class="btn btn-info btn-sm" id="btn_query" type="button">
-                    <i class="icon-ok"></i>
-                    查询
-                </button>
-                <button class="btn btn-sm" type="reset">
-                    <i class="icon-undo"></i>
-                    重置
-                </button>
-            </div>
+    </div>
+
+    <div class="col-md-12 text-center">
+        <div class="btn-group ">
+            <button class="btn btn-info btn-sm" id="btn_query" type="button">
+                <i class="icon-ok"></i>
+                查询
+            </button>
+            <button class="btn btn-sm" type="reset">
+                <i class="icon-undo"></i>
+                重置
+            </button>
         </div>
+        <br>
         <br>
     </div>
 
