@@ -46,4 +46,18 @@ public class CommonController {
         ModelAndView model = new ModelAndView("roleList");
         return model;
     }
+
+    @RequestMapping("/toLogin")
+    @ResponseBody
+    public ModelAndView toLogin() {
+        ModelAndView model = new ModelAndView("login");
+        return model;
+    }
+
+    @RequestMapping("/toError404")
+    @ResponseBody
+    public ModelAndView toError404() {
+        ModelAndView model = new ModelAndView("error404");
+        return model;
+    }
 }

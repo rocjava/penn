@@ -118,6 +118,12 @@
                             <span class="menu-text"> 角色管理 </span>
                         </a>
                     </li>
+                    <li class="navLi">
+                        <a href="${pageContext.request.contextPath}/toError404.do" navId="4" target="mainFrame_4">
+                            <i class="icon-tag"></i>
+                            <span class="menu-text"> 404页面 </span>
+                        </a>
+                    </li>
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-list"></i>
