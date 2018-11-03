@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="<%=basePath%>/assets/css/jquery-ui-1.10.3.full.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ui.jqgrid.css" />
 
-    <!-- datatime input -->
-    <link rel="stylesheet" href="<%=basePath%>/assets/css/jquery-ui-1.10.3.custom.min.css" />
-    <link rel="stylesheet" href="<%=basePath%>/assets/css/datepicker.css" />
-
     <!-- ace -->
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-rtl.min.css" />
@@ -24,6 +20,61 @@
     <script src="<%=basePath%>/assets/js/ace-extra.min.js"></script>
 </head>
 <body>
+
+    <br>
+    <div class="col-md-12">
+        <form class="form-horizontal" role="form" id="form_query" action="">
+            <div class="col-md-12">
+                <div class="form-group col-md-4">
+                    <label class="control-label col-md-4 no-padding-right" for="realName">姓名:</label>
+                    <div class="col-md-6">
+                        <input type="text" name="realName" id="realName" placeholder="Real name" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label col-md-4 no-padding-right"> 是否显示: </label>
+                    <div class="col-md-6">
+                        <label>
+                            <input name="switch-field-1" class="ace ace-switch ace-switch-5" type="checkbox" />
+                            <span class="lbl"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label col-md-4 no-padding-right" for="form-field-select-1">学历:</label>
+                    <div class="col-md-6">
+                        <select class="form-control" id="form-field-select-1">
+                            <option value="" selected>请选择</option>
+                            <option value="CA">博士</option>
+                            <option value="CO">硕士</option>
+                            <option value="CT">本科</option>
+                            <option value="CT">大专</option>
+                            <option value="CT">高中</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </form>
+    </div>
+
+    <div class="col-md-12 text-center">
+        <div class="btn-group ">
+            <button class="btn btn-info btn-sm" id="btn_query" type="button">
+                <i class="icon-ok"></i>
+                查询
+            </button>
+            <button class="btn btn-sm" type="reset">
+                <i class="icon-undo"></i>
+                重置
+            </button>
+        </div>
+        <br>
+        <br>
+    </div>
+    <hr>
+
     <div class="col-md-12">
         <!-- Table -->
         <table id="gridTable" class="table table-striped table-bordered table-hover"></table>
@@ -33,8 +84,6 @@
 
     <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
     <script src="<%=basePath%>/assets/js/bootstrap.min.js"></script>
-
-    <script src="<%=basePath%>/assets/js/date-time/bootstrap-datepicker.min.js"></script>
 
     <script src="<%=basePath%>/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
     <script src="<%=basePath%>/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
@@ -217,7 +266,7 @@
                 var realName = $("#realName").val();
                 var university = $("#university").val();
                 $("#gridTable").jqGrid('setGridParam',{
-                    url: "<%=basePath%>/back/user/list.do",
+                    url: "<%=basePath%>/back/role/list.do",
                     postData: {'name': userName,'university': university},
                     datatype: "json",
                     mtype : "post",

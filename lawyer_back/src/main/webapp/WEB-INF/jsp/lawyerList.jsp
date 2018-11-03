@@ -28,8 +28,6 @@
     <script src="<%=basePath%>/assets/js/ace-extra.min.js"></script>
 </head>
 <body>
-
-
         <div class="col-md-12">
             <form class="form-horizontal" role="form" id="form_query" action="">
                 <br>

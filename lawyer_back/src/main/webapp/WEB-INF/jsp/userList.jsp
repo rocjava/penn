@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="<%=basePath%>/assets/css/jquery-ui-1.10.3.full.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ui.jqgrid.css" />
 
-    <!-- datatime input -->
-    <link rel="stylesheet" href="<%=basePath%>/assets/css/jquery-ui-1.10.3.custom.min.css" />
-    <link rel="stylesheet" href="<%=basePath%>/assets/css/datepicker.css" />
-
     <!-- ace -->
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/assets/css/ace-rtl.min.css" />
@@ -24,11 +20,9 @@
     <script src="<%=basePath%>/assets/js/ace-extra.min.js"></script>
 </head>
 <body>
-
-    <div class="col-md-9">
+    <br>
+    <div class="col-md-12">
         <form class="form-horizontal" role="form" id="form_query" action="">
-            <br>
-            <br>
             <div class="col-md-12">
                 <div class="form-group col-md-4">
                     <label class="control-label col-md-4 no-padding-right" for="realName">姓名:</label>
@@ -78,7 +72,7 @@
         <br>
         <br>
     </div>
-
+    <hr>
     <div class="col-md-12">
         <!-- Table -->
         <table id="gridTable" class="table table-striped table-bordered table-hover"></table>
@@ -89,8 +83,6 @@
 
     <script src="<%=basePath%>/assets/js/jquery-2.0.3.min.js"></script>
     <script src="<%=basePath%>/assets/js/bootstrap.min.js"></script>
-
-    <script src="<%=basePath%>/assets/js/date-time/bootstrap-datepicker.min.js"></script>
 
     <script src="<%=basePath%>/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
     <script src="<%=basePath%>/assets/js/jqGrid/i18n/grid.locale-en.js"></script>
